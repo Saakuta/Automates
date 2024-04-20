@@ -28,7 +28,7 @@ bool test_complet_transition(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet)
     return true; // Remplacez par votre logique
 }
 
-void afficher_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
+void afficherAutomate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
     // Code pour afficher l'automate
 }
 
@@ -59,7 +59,7 @@ void complementariser_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabe
 int menu_automate() {
     int choix = -1;
     while (choix < 0 || choix > 44) {
-        printf("---Bonjour---\n0-Quitter\nChoisissez un automate : Entre 1 et 44\n");
+        printf("---Bienvenue---\n0-Quitter\nChoisissez un automate : Entre 1 et 44\n");
         printf("\nQue voulez vous faire ?\n");
         scanf("%d", &choix);
     }
@@ -105,19 +105,19 @@ int main() {
                     char automate_modifier[MAX_SIZE][MAX_SIZE];
                     ecrire_automate(automate_modifier, nb_alphabet);
                     printf("Automate changer :\n");
-                    afficher_automate(automate_modifier, nb_alphabet);
+                    afficherAutomate(automate_modifier, nb_alphabet);
                 } else if (choix_menu == 3) {
                     standardiser_automate(automate, nb_alphabet);
-                    afficher_automate(automate, nb_alphabet);
+                    afficherAutomate(automate, nb_alphabet);
                 } else if (choix_menu == 4) {
                     determiniser_automate(automate, nb_alphabet);
-                    afficher_automate(automate, nb_alphabet);
+                    afficherAutomate(automate, nb_alphabet);
                 } else if (choix_menu == 5) {
                     completer_automate(automate, nb_alphabet);
-                    afficher_automate(automate, nb_alphabet);
+                    afficherAutomate(automate, nb_alphabet);
                 } else if (choix_menu == 6) {
                     complementariser_automate(automate, nb_alphabet);
-                    afficher_automate(automate, nb_alphabet);
+                    afficherAutomate(automate, nb_alphabet);
                 }
             }
         }

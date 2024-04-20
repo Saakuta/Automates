@@ -55,7 +55,7 @@ void write_automaton_to_csv(FILE *fp) {
     }
 }
 
-int main() {
+int lecture() {
     FILE *fp = fopen("input.txt", "r");
     if (fp == NULL) {
         printf("Error opening file.\n");
