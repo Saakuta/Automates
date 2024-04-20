@@ -1,4 +1,4 @@
-#include "main.h"
+#include "verification.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,47 +9,51 @@
 #define MAX_SIZE 100
 
 bool verif_deterministe(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for verifying if the automate is deterministic
+    // Code pour vérifier si l'automate est déterministe
+    return true; // Remplacez par votre logique
 }
 
 bool verif_complet(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for verifying if the automate is complete
+    // Code pour vérifier si l'automate est complet
+    return true; // Remplacez par votre logique
 }
 
 bool verif_standard(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for verifying if the automate is standard
+    // Code pour vérifier si l'automate est standard
+    return true; // Remplacez par votre logique
 }
 
 bool test_complet_transition(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for testing if the transition is complete
+    // Code pour tester si la transition est complète
+    return true; // Remplacez par votre logique
 }
 
 void afficher_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for displaying the automate
+    // Code pour afficher l'automate
 }
 
 void lire_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for reading the automate from a file
+    // Code pour lire l'automate à partir d'un fichier
 }
 
 void ecrire_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for writing the automate to a file
+    // Code pour écrire l'automate dans un fichier
 }
 
-void standartiser_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for standardizing the automate
+void standardiser_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
+    // Code pour standardiser l'automate
 }
 
 void determiniser_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for determinizing the automate
+    // Code pour déterminiser l'automate
 }
 
 void completer_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for completing the automate
+    // Code pour compléter l'automate
 }
 
 void complementariser_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Code for complementarizing the automate
+    // Code pour complémentariser l'automate
 }
 
 int menu_automate() {
@@ -65,10 +69,9 @@ int menu_automate() {
 int menu_choix() {
     int choix = -1;
     while (choix < 0 || choix > 6) {
-        printf("\n0-Quitter\n1-Lire un autre automate\n2-Afficher un automate\n"
-               "3-Standartiser un automate\n4-Determiniser un automate\n5-Completer un automate\n"
-               "6-Complementariser un automate\n");
-        printf("Que voulez vous faire ?\n");
+        printf("\n0-Quitter\n1-Determiniser un automate\n2-Standardiser un automate\n");
+        printf("3-Compléter un automate\n4-Complémentariser un automate\n5-Lire un automate\n");
+        printf("6-Écrire un automate\nQue voulez vous faire ?\n");
         scanf("%d", &choix);
     }
     return choix;
@@ -76,10 +79,13 @@ int menu_choix() {
 
 int main() {
     char automate[MAX_SIZE][MAX_SIZE];
-    int nb_alphabet;
+    int nb_alphabet = 0; // Initialiser avec une valeur appropriée
 
     while (1) {
-        if (remove("transition.csv") == 0) {
+        FILE *file = fopen("transition.csv", "r");
+        if (file) {
+            fclose(file);
+            remove("transition.csv");
             printf("File transition.csv deleted successfully\n");
         }
 
@@ -90,9 +96,6 @@ int main() {
         } else {
             while (1) {
                 int choix_menu = menu_choix();
-                char automate_debut[MAX_SIZE][MAX_SIZE];
-                lire_automate(automate_debut, nb_alphabet);
-
                 if (choix_menu == 0) {
                     printf("Au revoir !\n");
                     exit(0);
@@ -104,7 +107,7 @@ int main() {
                     printf("Automate changer :\n");
                     afficher_automate(automate_modifier, nb_alphabet);
                 } else if (choix_menu == 3) {
-                    standartiser_automate(automate, nb_alphabet);
+                    standardiser_automate(automate, nb_alphabet);
                     afficher_automate(automate, nb_alphabet);
                 } else if (choix_menu == 4) {
                     determiniser_automate(automate, nb_alphabet);

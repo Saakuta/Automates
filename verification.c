@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAX_LINE_LENGTH 1024
 
@@ -29,9 +30,7 @@ char **ajouter_etat_poubelle(char **automate, int *nb_lignes, int nb_colonnes) {
     for (int row_index = 1; row_index < *nb_lignes; row_index++) {
         if (strlen(automate[row_index]) > 2) {
             for (int col_index = 1; col_index < nb_colonnes - 1; col_index++) {
-                if ((automate[row_index][col_index] == '\0' || isspace(automate[row_index][col_index])) &&
-                    (automate[0][col_index] == 'a' || automate[0][col_index] == 'b' || automate[0][col_index] == 'c' ||
-                     automate[0][col_index] == 'd' || automate[0][col_index] == '*')) {
+                if ((automate[row_index][col_index] == '\0' || isspace(automate[row_index][col_index])) && (automate[0][col_index] == 'a' || automate[0][col_index] == 'b' || automate[0][col_index] == 'c' || automate[0][col_index] == 'd' || automate[0][col_index] == '*')) {
                     if (!etat_poubelle_ajoute) {
                         etat_poubelle_ajoute = 1;
                         // Ajout de l'état poubelle à l'automate avec des transitions vers lui-même pour les états 'a' et 'b'
@@ -143,7 +142,7 @@ int test_standard(char **automate, int nb_lignes, int nb_colonnes) {
     return 1;
 }
 
-int main() {
+int test() {
     char ligne[MAX_LINE_LENGTH];
     char *token;
     int nb_lignes = 0;
