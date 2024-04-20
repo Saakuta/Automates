@@ -8,4 +8,8 @@ include_directories(.)
 add_executable(Automates
         main.c
         main.h
-        README.md)
+        README.md
+        lecture.h
+        lecture.c
+        verification.h
+        verification.c)
