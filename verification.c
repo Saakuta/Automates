@@ -1,6 +1,5 @@
 #include "verification.h"
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,9 +7,22 @@
 
 #define MAX_LINE_LENGTH 1024
 
-// Fonction pour afficher l'automate
-void afficher_automate(char **automate, int nb_lignes) {
-    for (int i = 0; i < nb_lignes; i++) {
+
+
+bool verif_deterministe(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
+    // Implémentation de la vérification...
+    return true;
+}
+
+bool verif_complet(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
+    // Implémentation de la vérification...
+    return true;
+}
+
+// Implémentations des autres fonctions de vérification...
+
+void afficher_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
+    for (int i = 0; i < nb_alphabet; i++) {
         printf("%s\n", automate[i]);
     }
 }
@@ -176,8 +188,6 @@ int test() {
     // Ajout de l'état poubelle
     automate = ajouter_etat_poubelle(automate, &nb_lignes, nb_colonnes);
 
-    // Affichage de l'automate
-    afficher_automate(automate, nb_lignes);
 
     // Vérification des propriétés de l'automate
     printf("L'automate est %sdéterministe.\n", test_deterministe(automate, nb_lignes, nb_colonnes) ? "" : "non ");
