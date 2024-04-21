@@ -1,5 +1,5 @@
 #include "verification.h"
-
+#include "lecture.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,9 +10,7 @@
 
 
 
-void lire_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Implémentation ici...
-}
+
 
 void ecrire_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
     // Implémentation ici...
@@ -67,6 +65,10 @@ int main() {
             printf("Au revoir !\n");
             break;  // Sortie de la boucle principale
         }
+        switch (choix_automate) {
+            case 1:
+
+        }
 
         int choix_menu = menu_choix();
         if (choix_menu == 0) {
@@ -76,6 +78,7 @@ int main() {
 
         switch (choix_menu) {
             case 1:
+                test();
                 determiniser_automate(automate, nb_alphabet);
                 afficher_automate(automate, nb_alphabet);
                 break;
@@ -92,7 +95,6 @@ int main() {
                 afficher_automate(automate, nb_alphabet);
                 break;
             case 5:
-                lire_automate(automate, nb_alphabet);
                 break;
             case 6:
                 ecrire_automate(automate, nb_alphabet);

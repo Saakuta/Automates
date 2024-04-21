@@ -13,67 +13,27 @@ char states[MAX_STATES][3];
 char symbols[MAX_SYMBOLS][2];
 char transitions[MAX_TRANSITIONS][6];
 
-void read_automaton_from_file(FILE *fp) {
-    fscanf(fp, "%d %d %d %d %d", &num_states, &num_initial_states, &num_final_states, &num_transitions, &num_symbols);
 
-    for (int i = 0; i < num_states; i++) {
-        fscanf(fp, "%s", states[i]);
+void lecture(const char *inputPath, const char *outputPath) {
+    FILE *inputFile = fopen(inputPath, "r"); // Ouvrir le fichier source en mode lecture
+    if (inputFile == NULL) {
+        perror("Erreur lors de l'ouverture du fichier d'entrée");
+        return;
     }
 
-    for (int i = 0; i < num_symbols; i++) {
-        fscanf(fp, "%s", symbols[i]);
+    FILE *outputFile = fopen(outputPath, "w"); // Créer le fichier de sortie en mode écriture
+    if (outputFile == NULL) {
+        perror("Erreur lors de la création du fichier de sortie");
+        fclose(inputFile);
+        return;
     }
 
-    for (int i = 0; i < num_transitions; i++) {
-        fscanf(fp, "%s", transitions[i]);
+    char buffer[1024]; // Un buffer pour stocker les lignes lues
+    while (fgets(buffer, sizeof(buffer), inputFile) != NULL) { // Lire chaque ligne du fichier source
+        fputs(buffer, outputFile); // Écrire la ligne dans le fichier de sortie
     }
+
+    // Fermer les fichiers ouverts
+    fclose(inputFile);
+    fclose(outputFile);
 }
-
-void write_automaton_to_csv(FILE *fp) {
-    fprintf(fp, "etat");
-    for (int i = 0; i < num_symbols; i++) {
-        fprintf(fp, ",%s", symbols[i]);
-    }
-    fprintf(fp, "\n");
-
-    for (int i = 0; i < num_states; i++) {
-        fprintf(fp, "%s", states[i]);
-        for (int j = 0; j < num_symbols; j++) {
-            int found = 0;
-            for (int k = 0; k < num_transitions; k++) {
-                if (strncmp(states[i], transitions[k], 2) == 0 && strcmp(symbols[j], &transitions[k][2]) == 0) {
-                    fprintf(fp, ",%s", &transitions[k][4]);
-                    found = 1;
-                    break;
-                }
-            }
-            if (!found) {
-                fprintf(fp, ",-");
-            }
-        }
-        fprintf(fp, "\n");
-    }
-}
-
-int lecture() {
-    FILE *fp = fopen("input.txt", "r");
-    if (fp == NULL) {
-        printf("Error opening file.\n");
-        return 1;
-    }
-
-    read_automaton_from_file(fp);
-    fclose(fp);
-
-    fp = fopen("output.csv", "w");
-    if (fp == NULL) {
-        printf("Error opening file.\n");
-        return 1;
-    }
-
-    write_automaton_to_csv(fp);
-    fclose(fp);
-
-    return 0;
-}
-

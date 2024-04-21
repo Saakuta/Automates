@@ -8,19 +8,6 @@
 #define MAX_LINE_LENGTH 1024
 
 
-
-bool verif_deterministe(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Implémentation de la vérification...
-    return true;
-}
-
-bool verif_complet(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
-    // Implémentation de la vérification...
-    return true;
-}
-
-// Implémentations des autres fonctions de vérification...
-
 void afficher_automate(char automate[MAX_SIZE][MAX_SIZE], int nb_alphabet) {
     for (int i = 0; i < nb_alphabet; i++) {
         printf("%s\n", automate[i]);
@@ -162,7 +149,7 @@ int test() {
     char **automate = NULL;
 
     // Ouverture du fichier CSV en mode lecture ('r' pour 'read')
-    FILE *fichier_automate = fopen("Lecture.csv", "r");
+    FILE *fichier_automate = fopen("output.csv", "r");
     if (fichier_automate == NULL) {
         printf("Erreur lors de l'ouverture du fichier.\n");
         return 1;
