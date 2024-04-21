@@ -4,17 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_STATES 100
-#define MAX_SYMBOLS 100
-#define MAX_TRANSITIONS 1000
 
-int num_states, num_initial_states, num_final_states, num_transitions, num_symbols;
-char states[MAX_STATES][3];
-char symbols[MAX_SYMBOLS][2];
-char transitions[MAX_TRANSITIONS][6];
-
-
-void lecture(const char *inputPath, const char *outputPath) {
+void lecture(char *inputPath, char *outputPath) {
     FILE *inputFile = fopen(inputPath, "r"); // Ouvrir le fichier source en mode lecture
     if (inputFile == NULL) {
         perror("Erreur lors de l'ouverture du fichier d'entrée");
